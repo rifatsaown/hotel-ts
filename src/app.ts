@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken';
 import express from 'express';
 import cors from 'cors';
 import fs from 'fs';
@@ -18,10 +19,19 @@ app.get('/', (req, res) => {
     res.send(filePath);
 });
 
+/*------------ JWT Routes --------------*/
+app.post('/jwt', (req, res) => {
+    const user = req.body;
+    const token = jwt.sign(user, process.env.JWT_SECRET_KEY, { expiresIn: "1h" });
+    res.send({ token });
+})
+
 // Other Routes import 
 import basicInfoRoutes from './routes/basicInfoRoutes';
+import userRoutes from './routes/userRoutes';
 
 // Use Routes
 app.use('/api', basicInfoRoutes);
+app.use('/user', userRoutes);
 
 export default app;

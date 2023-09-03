@@ -6,13 +6,7 @@ const mongodb_1 = require("mongodb");
 const uri = process.env.MONGODB_URI;
 let dbConnection = null; // connection to the database is stored here once it is established the first time 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new mongodb_1.MongoClient(uri, {
-    serverApi: {
-        version: mongodb_1.ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-    }
-});
+const client = new mongodb_1.MongoClient(uri);
 const connectToDatabase = async () => {
     if (dbConnection)
         return;
