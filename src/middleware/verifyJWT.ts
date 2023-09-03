@@ -17,7 +17,6 @@ export const verifyJwt = async (req: Request, res: Response, next: NextFunction)
             return res.status(403).send({ status: 'error', message: 'Unauthorized Access' });
         }
         (req as any).user = user;
-        console.log("User:", user);
         next();
     })
 }

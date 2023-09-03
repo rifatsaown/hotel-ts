@@ -28,10 +28,16 @@ app.post('/jwt', (req, res) => {
 
 // Other Routes import 
 import basicInfoRoutes from './routes/basicInfoRoutes';
+import bookingRoutes from './routes/bookingRoutes';
+import paymentRoutes from './routes/paymentRoutes';
+import roomRoutes from './routes/roomRoutes';
 import userRoutes from './routes/userRoutes';
 
 // Use Routes
 app.use('/api', basicInfoRoutes);
 app.use('/user', userRoutes);
+app.use('/rooms', roomRoutes);
+app.use('/booking', bookingRoutes);
+app.use('/payment', paymentRoutes);
 
 export default app;
