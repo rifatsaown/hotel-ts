@@ -1,7 +1,7 @@
-import jwt from 'jsonwebtoken';
-import express from 'express';
 import cors from 'cors';
+import express from 'express';
 import fs from 'fs';
+import jwt from 'jsonwebtoken';
 import path from 'path';
 import { dbInstance } from './middleware/dbInstance';
 

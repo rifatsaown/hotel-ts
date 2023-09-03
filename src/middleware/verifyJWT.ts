@@ -4,7 +4,8 @@ require('dotenv').config();
 
 export const verifyJwt = async (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;
-    if (!authHeader) {
+    
+    if (!authHeader) { 
         return res.status(401).send({ status: 'error', message: 'Unauthorized Access' });
     }
     // Bearer token cut from header
@@ -12,9 +13,11 @@ export const verifyJwt = async (req: Request, res: Response, next: NextFunction)
     
     jwt.verify(token, process.env.JWT_SECRET_KEY, (err, user) => {
         if (err) {
+            console.log("Error Verifying JWT:", err);
             return res.status(403).send({ status: 'error', message: 'Unauthorized Access' });
         }
         (req as any).user = user;
+        console.log("User:", user);
         next();
     })
 }
