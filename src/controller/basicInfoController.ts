@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
 const getHotelInfo = async (req:Request, res:Response) => {
-    const result = (req as any).db.collection('hotelInfo').find({}).toArray();
+    const result = req.db.collection('hotelInfo').find({}).toArray();
     res.send(await result);
 }
 
