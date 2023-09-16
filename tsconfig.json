@@ -3,10 +3,7 @@
     "target": "es2020",
     "module": "NodeNext",
     "outDir": "dist",
-    "sourceMap": true,
-    "paths": {
-      "*": ["node_modules/*", "src/types/*"]
-    }
+    "sourceMap": true
   },
   "include": ["src/**/*", "types/express.d.ts"]
 }
