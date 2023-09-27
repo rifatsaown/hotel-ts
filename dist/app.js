@@ -20,6 +20,11 @@ app.get('/', (req, res) => {
     const filePath = fs_1.default.readFileSync(path_1.default.join(__dirname, '../public/index.html'), 'utf-8');
     res.send(filePath);
 });
+/* Cheak Db connected or not */
+app.get('/db', (req, res) => {
+    const db = req.app.locals.db;
+    res.send(db);
+});
 /*------------ JWT Routes --------------*/
 app.post('/jwt', (req, res) => {
     const user = req.body;
