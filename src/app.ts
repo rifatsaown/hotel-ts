@@ -21,8 +21,14 @@ app.get('/', (req, res) => {
 
 /* Cheak Db connected or not */
 app.get('/db', (req, res) => {
-    const db = req.app.locals.db;
-    res.send(db);
+    const db = (req as any).db;
+    console.log(db);
+    if (db) {
+        res.send({ status: 'success', message: 'Database connected successfully' });
+    }
+    else {
+        res.send({ status: 'error', message: 'Database connection failed' });
+    }
 });
 
 /*------------ JWT Routes --------------*/
