@@ -23,7 +23,6 @@ app.get('/', (req, res) => {
 /* Cheak Db connected or not */
 app.get('/db', (req, res) => {
     const db = req.db;
-    console.log(db);
     if (db) {
         res.send({ status: 'success', message: 'Database connected successfully' });
     }
